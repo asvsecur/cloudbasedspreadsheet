@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="panel panel-default custab">
+        <div class="panel-heading"><strong>Upload Files</strong> </div>
+        <div class="panel-body">
+            <h5>Select files from your computer</h5>
+            <%= form_for @datum do |f| %>
+                <% if @datum.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@datum.errors.count, "error") %> prohibited this datum from being saved:</h2>
+                        <ul>
+                            <% @datum.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <%= hidden_field_tag 'user_id', current_user.id %>
+                        <%= f.file_field :file, required: true %>
+                    </div>
+                    <%= f.submit "Upload files", class: "btn btn-sm btn-primary"%>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+</div>

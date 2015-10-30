@@ -1,29 +1,43 @@
-<h2>Sign up</h2>
+<div class="container">
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+                <h2>Register</h2>
+				        <hr class="colorgraph">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+                <div class="field">
+                    <%= f.label :name %><br />
+                    <%= f.text_field :name, autofocus: true, class: "form-control input-lg", placeholder: "Name", required: true %>
+                </div>
 
-    <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
+                <div class="field">
+                    <%= f.label :email %><br />
+                    <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: "Email Address", required: true, pattern: "[^@]+@[^@]+\.[a-zA-Z]{2,}" %>
+                </div>
+
+                <div class="field">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                        <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder: "Password", required: true %>
+                </div>
+
+                <div class="field">
+                    <%= f.label :password_confirmation %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-lg", placeholder: "Password", required: true %>
+                </div>
+                <hr class="colorgraph">
+                <div class="row">
+					          <div class="col-xs-6 col-sm-6 col-md-6 actions">
+                        <%= f.submit "Register",class: "btn btn-lg btn-success btn-block" %>
+					          </div>
+					          <div class="col-xs-6 col-sm-6 col-md-6">
+                        <%= render "devise/shared/links" %>
+					          </div>
+				        </div>
+            <% end %>
+	      </div>
     </div>
-
-    <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="actions">
-        <%= f.submit "Sign up" %>
-    </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

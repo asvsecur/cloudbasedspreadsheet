@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @datum.name %>
+</p>
+<p>
+  <strong>File:</strong>
+  <%= @datum.file_file_name %>
+</p>
+
+<%= link_to 'Edit', edit_user_datum_path(current_user, @datum) %> |
+<%= link_to 'Back', user_data_path(current_user) %>

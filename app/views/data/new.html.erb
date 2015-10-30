@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="panel panel-default custab">
+        <div class="panel-heading"><strong>Download File</strong> </div>
+        <div class="panel-body">
+            <div class="form-inline">
+                <div class="form-group">
+                    <h5>Broker Details</h5>
+                </div>
+                <%= link_to 'Download', user_doc_path(current_user), class: 'btn btn-sm btn-primary' %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= render 'form' %>
+<% if @data.present? %>
+    <%= render 'index' %>
+<%end%>

@@ -1,0 +1,35 @@
+<div class="container">
+    <hr class="colorgraph">
+    <div class="panel panel-default custab">
+        <div class="panel-heading"><strong>List of SpreadSheets</strong> </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>File</th>
+                    <th>Created By</th>
+                    <th>Created At</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <% @data.each_with_index do |datum, i| %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= datum.file_file_name %></td>
+                    <td><%= datum.user.name %></td>
+                    <td><%= I18n.l datum.created_at, format: :long %></td>
+                    <td class="text-center">
+                        <%= link_to download_user_datum_path(current_user, datum), class: 'btn btn-info btn-xs' do %>
+                            <i class="fa fa-cloud-download"> Download</i>
+                        <% end %>
+                        <% if datum.user == current_user %>
+                            <%= link_to user_datum_path(current_user, datum), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do %>
+                                <i class="fa fa-trash-o"> Delete</i>
+                            <% end %>
+                        <%end%>
+                    </td>
+                </tr>
+            <%end%>
+        </table>
+    </div>
+</div>
