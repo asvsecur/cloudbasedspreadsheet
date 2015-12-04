@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.secret_key_base = '16717d66179adc2758c6e59275a5ea237ad050b4f1a70451d9bd1c673bdc632e46fe36afeb7b13a52fdb1609957f3f252cfc4a0f335c86897020a93b4c1da04d'
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -78,8 +78,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  Rails.application.routes.default_url_options[:host] = 'Your site URL'
-  config.action_mailer.default_url_options = { :host => 'Your site URL'
+  config.action_mailer.default_url_options = { host: 'asvsecur.herokuapp.com' }
+  Rails.application.routes.default_url_options[:host] = 'asvsecur.herokuapp.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -88,10 +88,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "GMAIL_DOMAIN",
+    domain: "asvsecur.herokuapp.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "GMAIL_USERNAME",
-    password: "GMAIL_PASSWORD"
+    user_name: "no.reply.bksriharsha@gmail.com",
+    password: "123456@abc"
   }
 end
