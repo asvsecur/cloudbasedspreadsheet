@@ -96,4 +96,5 @@ Rails.application.configure do
   ActionMailer::Base.delivery_method = :smtp
   config.action_controller.include_all_helpers = true
   ActionMailer::Base.default :from => "no-reply@asvsecurity.ie"
+  ActionMailer::Base.default :reply_to => "no-reply@asvsecurity.ie"
 end
