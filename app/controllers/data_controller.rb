@@ -4,7 +4,7 @@ class DataController < ApplicationController
   # GET /data
   # GET /data.json
   def index
-    @data = @user.datum.all
+    @data = @user.datum.last
   end
 
   # GET /data/1
@@ -32,7 +32,7 @@ class DataController < ApplicationController
     @datum = Datum.new(datum_params)
     respond_to do |format|
       if @datum.save
-        format.html { redirect_to new_user_datum_path(@user), notice: 'Datum was successfully created.' }
+        format.html { redirect_to user_datum_path(@user, @datum), notice: 'Datum was successfully created.' }
         format.json { render :show, status: :created, location: @datum }
       else
         format.html { render :new }
@@ -74,17 +74,13 @@ class DataController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def set_datum
-    if @user.admin?
-      @datum = Datum.find params[:id]
-    else
-      @datum = @user.datum.find(params[:id])
-    end
+      @datum = Datum.find(params[:id])
   end
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def datum_params
-      data_params = params.require(:datum).permit(:name, :file, :user_id)
-      data_params.merge({user_id: @user.id})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def datum_params
+    data_params = params.require(:datum).permit(:name, :file, :user_id, :title, :firstname, :surname, :address, :email, :telephone, :amount, :entry_date, :anniversary_date_1, :anniversary_date_2, :anniversary_date_3, :interest_amount, :trailer_comm, :initial_comm, :cash, :maturity_date)
+    data_params.merge({user_id: @user.id})
+  end
 end

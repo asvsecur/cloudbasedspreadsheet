@@ -6,7 +6,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    new_user_datum_path(current_user)
+    boker_data = Datum.last
+    if boker_data.present?
+      user_datum_path(current_user, boker_data)
+    else
+      user_data_path(current_user)
+    end
   end
 
 

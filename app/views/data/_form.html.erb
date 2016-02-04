@@ -1,8 +1,8 @@
 <div class="container">
     <div class="panel panel-default custab">
-        <div class="panel-heading"><strong>Upload Files</strong> </div>
+        <div class="panel-heading"><strong>Broker Details</strong>
+        </div>
         <div class="panel-body">
-            <h5>Select files from your computer</h5>
             <%= form_for @datum do |f| %>
                 <% if @datum.errors.any? %>
                     <div id="error_explanation">
@@ -14,16 +14,108 @@
                         </ul>
                     </div>
                 <% end %>
+                <div class="row small-margin-top">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="register4-firstname">Title</label>
+                            <%= f.text_field :title, class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row small-margin-top">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="register4-firstname">Firstname</label>
+                            <%= f.text_field :firstname,  class: "form-control" %>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="register4-lastname">Lastname</label>
+                            <%= f.text_field :surname,  class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row small-margin-top">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="register4-firstname">Address</label>
+                            <%= f.text_area :address,  class: "form-control", rows: 5 %>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="register4-lastname">Email</label>
+                            <%= f.email_field :email,  class: "form-control" %>
+                            <label for="register4-lastname">TelePhone</label>
+                            <%= f.telephone_field :telephone,  class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row small-margin-top">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="register4-firstname">Amount</label>
+                            <%= f.text_field :amount,  class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row small-margin-top">
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="register4-firstname">Entry Date</label>
+                            <%= f.date_field :entry_date,  class: "form-control" %>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="register4-firstname">Anniversary Date</label>
+                            <%= f.date_field :anniversary_date_1,  class: "form-control" %>
+                            <%= f.date_field :anniversary_date_2,  class: "form-control" %>
+                            <%= f.date_field :anniversary_date_3,  class: "form-control" %>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="register4-firstname">Interest Amount</label>
+                            <%= f.number_field :interest_amount,  class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row small-margin-top">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="register4-firstname">Trailer Comm</label>
+                            <%= f.text_area :trailer_comm,  class: "form-control", rows: 5 %>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="register4-firstname">Initial Comm</label>
+                            <%= f.text_area :initial_comm,  class: "form-control", rows: 5 %>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row small-margin-top">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="register4-firstname">Maturity Date</label>
+                            <%= f.date_field :maturity_date,  class: "form-control" %>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="register4-firstname">Cash or pension?</label>
+                            <%= f.text_field :pensionor_cash,  class: "form-control" %>
+                        </div>
+                    </div>
+
+                </div>
+
 
                 <div class="form-inline">
                     <div class="form-group">
                         <%= hidden_field_tag 'user_id', current_user.id %>
-                        <%= f.file_field :file, required: true %>
+                        <%= f.submit "Submit", class: "btn btn-sm btn-primary"%>
                     </div>
-                    <%= f.submit "Upload files", class: "btn btn-sm btn-primary"%>
                 </div>
             <% end %>
-
         </div>
     </div>
 </div>

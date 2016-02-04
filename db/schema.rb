@@ -11,17 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029051637) do
+ActiveRecord::Schema.define(version: 20160204064425) do
 
   create_table "data", force: :cascade do |t|
-    t.string   "name",              limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "file_file_name",    limit: 255
-    t.string   "file_content_type", limit: 255
-    t.integer  "file_file_size",    limit: 4
+    t.string   "name",               limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "file_file_name",     limit: 255
+    t.string   "file_content_type",  limit: 255
+    t.integer  "file_file_size",     limit: 4
     t.datetime "file_updated_at"
-    t.integer  "user_id",           limit: 4
+    t.integer  "user_id",            limit: 4
+    t.string   "title",              limit: 255
+    t.string   "firstname",          limit: 255
+    t.string   "surname",            limit: 255
+    t.text     "address",            limit: 65535
+    t.string   "email",              limit: 255
+    t.string   "telephone",          limit: 255
+    t.string   "amount",             limit: 255
+    t.date     "entry_date"
+    t.string   "interest_amount",    limit: 255
+    t.string   "trailer_comm",       limit: 255
+    t.string   "initial_comm",       limit: 255
+    t.date     "maturity_date"
+    t.date     "anniversary_date_1"
+    t.date     "anniversary_date_2"
+    t.date     "anniversary_date_3"
+    t.string   "pensionor_cash",     limit: 255
   end
 
   create_table "users", force: :cascade do |t|

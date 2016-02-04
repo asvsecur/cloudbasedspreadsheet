@@ -1,6 +1,8 @@
-<h1>Editing Datum</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', user_datum_path(current_user,@datum) %> |
-<%= link_to 'Back', user_data_path(current_user) %>
+<div class="row">
+    <div class="col-lg-2 pull-right">
+        <%= link_to 'View Broker Details', user_datum_path(current_user,@datum), class: 'btn btn-sm btn-primary pull-right' %>
+    </div>
+</div>
+<div class="small-margin-top">
+    <%= render 'form' %>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="panel panel-default custab">
+        <div class="panel-heading"><strong>Broker Details</strong>
+        </div>
+        <div class="panel-body">
+            <div>
+                No data yet to display
+            </div>
+            <% if current_user.admin? %>
+                <%=  link_to "New Details",  new_user_datum_url(current_user), class: 'btn btn-sm btn-primary small-margin-top', data: { no_turbolink: true } %>
+            <% end  %>
+        </div>
+    </div
+</div>

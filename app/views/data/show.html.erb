@@ -1,13 +1,112 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+    <div class="col-lg-5">
+        <div class="media">
+            <div class="media-body">
+                <h4 class="media-heading"><small> <%= @datum.title %></small> <%= @datum.firstname %> <%= @datum.surname %></h4>
+                <h5><%=  @datum.address  %></h5>
+                <h5><%=  @datum.email  %></h5>
+                <h5><%=  @datum.telephone  %></h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 pull-right">
+        <% if current_user.admin?  %>
+            <%= link_to 'Edit Broker Details', edit_user_datum_path(current_user, @datum), class: 'btn btn-sm btn-primary pull-right' %>
+        <% end %>
+    </div>
+</div>
+<hr class="colorgraph">
+<div class="row">
+    <div class="col-xs-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Amount</h3>
+            </div>
+            <div class="panel-body"> <%=@datum.amount  %> </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Entry Date</h3>
+            </div>
+            <div class="panel-body">
+                <% if @datum.entry_date %>
+                    <%= I18n.l @datum.entry_date, :format => :long  %>
+                <%else%>
+                    <span> No data to show</span>
+                <%end%>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Anniversary Dates</h3>
+            </div>
+            <div class="panel-body">
+                <% if @datum.anniversary_date_1 || @datum.anniversary_date_2 || @datum.anniversary_date_3 %>%
+                    <span>
+                        <%= I18n.l @datum.anniversary_date_1, :format => :long  %>
+                        <br/>
+                        <%= I18n.l @datum.anniversary_date_2, :format => :long  %>
+                        <br/>
+                        <%= I18n.l @datum.anniversary_date_3, :format => :long  %>
+                    </span>
+                <%else%>
+                    <span> No data to show</span>
+                <%end%>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">Interest Amount</h3>
+            </div>
+            <div class="panel-body"> <%=@datum.interest_amount  %> </div>
+        </div>
+    </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @datum.name %>
-</p>
-<p>
-  <strong>File:</strong>
-  <%= @datum.file_file_name %>
-</p>
-
-<%= link_to 'Edit', edit_user_datum_path(current_user, @datum) %> |
-<%= link_to 'Back', user_data_path(current_user) %>
+<div class="row">
+    <div class="col-xs-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Trailer Comm</h3>
+            </div>
+            <div class="panel-body"> <%=@datum.trailer_comm  %> </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Initial Comm</h3>
+            </div>
+            <div class="panel-body"> <%=@datum.initial_comm  %> </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Maturity Date</h3>
+            </div>
+            <div class="panel-body">
+                <% if @datum.maturity_date %>
+                    <%= I18n.l @datum.maturity_date, :format => :long  %>
+                <%else%>
+                    <span> No data to show</span>
+                <%end%>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">Pension or Cash?</h3>
+            </div>
+            <div class="panel-body"> <%=@datum.pensionor_cash  %> </div>
+        </div>
+    </div>
+</div>
