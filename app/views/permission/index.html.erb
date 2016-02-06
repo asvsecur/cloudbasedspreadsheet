@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-lg-2 pull-right">
+        <%= link_to 'Add Broker Details', new_user_datum_path(current_user), class: 'btn btn-sm btn-primary pull-right' %>
+    </div>
+</div>
+
+<div class="container">
+    <hr class="colorgraph">
+    <div class="panel panel-default custab">
+        <div class="panel-heading"><strong>List of Users</strong> </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Can Access</th>
+                    <th>Set Access</th>
+                </tr>
+            </thead>
+            <% @data.each_with_index do |user, i| %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= user.name %></td>
+                    <td>
+                        <% user.accessible_datums.each do |data| %>
+                            <%= link_to user_datum_path(current_user, data), class: 'btn btn-warning btn-xs' do %>
+                                <i class="fa fa-eye"> <%= data.name %> </i>
+                            <% end %>
+                        <%end%>
+                    </td>
+                    <td>
+                        <%= form_tag url: user_permission_index_path(current_user), method: :post  do |f| %>
+                            <div class="control-group inline">
+                                <div classs="controls">
+                                    <%= hidden_field_tag 'set_user_id', user.id %>
+                                    <%= select_tag 'data_id', options_for_select(Datum.all.collect{|d| [d.name, d.id]})  %>
+                                </div>
+                            </div>
+                            <div class="control-group inline">
+                                <div classs="controls">
+                                    <%= submit_tag "Submit", class: 'btn btn-primary btn-xs' %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </td>
+                </tr>
+            <%end%>
+        </table>
+    </div>
+</div>

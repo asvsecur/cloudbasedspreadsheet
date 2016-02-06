@@ -1,14 +1,69 @@
+<% if current_user.admin?  %>
+    <div class="row">
+        <div class="col-lg-2 pull-right">
+            <%= link_to 'Add Broker Details', new_user_datum_path(current_user), class: 'btn btn-sm btn-primary pull-right' %>
+        </div>
+    </div>
+<% end %>
+
 <div class="container">
+    <hr class="colorgraph">
     <div class="panel panel-default custab">
-        <div class="panel-heading"><strong>Broker Details</strong>
-        </div>
-        <div class="panel-body">
-            <div>
-                No data yet to display
-            </div>
-            <% if current_user.admin? %>
-                <%=  link_to "New Details",  new_user_datum_url(current_user), class: 'btn btn-sm btn-primary small-margin-top', data: { no_turbolink: true } %>
-            <% end  %>
-        </div>
-    </div
+        <div class="panel-heading"><strong>List of Broker Details</strong> </div>
+        <%- if @data.blank? %>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Created By</th>
+                        <th>Created At</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> No data </td>
+                        <td> No data </td>
+                        <td> No data </td>
+                        <td> No data </td>
+                        <td class="text-center"> No data </td>
+                    </tr>
+                </tbody>
+            </table>
+        <%else%>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Created By</th>
+                        <th>Created At</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <% @data.each_with_index do |datum, i| %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= datum.name %></td>
+                        <td><%= datum.user.name %></td>
+                        <td><%= I18n.l datum.created_at, format: :long %></td>
+                        <td class="text-center">
+                            <%= link_to user_datum_path(current_user, datum), class: 'btn btn-warning btn-xs' do %>
+                                <i class="fa fa-eye"> Show </i>
+                            <% end %>
+                            <%  if current_user.admin?  %>
+                                <%= link_to edit_user_datum_path(current_user, datum), class: 'btn btn-info btn-xs' do %>
+                                    <i class="fa fa-pencil-square-o"> Edit</i>
+                                <% end %>
+                                <%= link_to user_datum_path(current_user, datum), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do %>
+                                    <i class="fa fa-trash-o"> Delete</i>
+                                <%end%>
+                            <% end %>
+                        </td>
+                    </tr>
+                <%end%>
+            </table>
+        <%end%>
+    </div>
 </div>

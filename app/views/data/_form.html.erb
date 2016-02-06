@@ -6,7 +6,6 @@
             <%= form_for @datum do |f| %>
                 <% if @datum.errors.any? %>
                     <div id="error_explanation">
-                        <h2><%= pluralize(@datum.errors.count, "error") %> prohibited this datum from being saved:</h2>
                         <ul>
                             <% @datum.errors.full_messages.each do |message| %>
                                 <li><%= message %></li>
@@ -14,6 +13,15 @@
                         </ul>
                     </div>
                 <% end %>
+                <div class="row small-margin-top">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="register4-firstname">Name</label>
+                            <%= f.text_field :name, class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row small-margin-top">
                     <div class="form-group">
                         <div class="col-xs-6">
@@ -73,7 +81,7 @@
                         </div>
                         <div class="col-xs-6">
                             <label for="register4-firstname">Interest Amount</label>
-                            <%= f.number_field :interest_amount,  class: "form-control" %>
+                            <%= f.text_field :interest_amount,  class: "form-control" %>
                         </div>
                     </div>
                 </div>
@@ -81,13 +89,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="register4-firstname">Trailer Comm</label>
-                            <%= f.text_area :trailer_comm,  class: "form-control", rows: 5 %>
+                            <%= f.text_field :trailer_comm,  class: "form-control" %>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="register4-firstname">Initial Comm</label>
-                            <%= f.text_area :initial_comm,  class: "form-control", rows: 5 %>
+                            <%= f.text_field :initial_comm,  class: "form-control" %>
                         </div>
                     </div>
 

@@ -20,6 +20,11 @@
                     <img alt="ASV Logo" src="http://www.asvsecurity.ie/wp-content/uploads/2015/09/asv-logo.png" width='120px' />
                 </div>
                 <div class="collapse navbar-collapse">
+                    <p class="navbar-text pull-left">
+                        <% if user_signed_in? && current_user.admin? %>
+                            <%= link_to 'Permissions', user_permission_index_path(current_user), class: 'navbar-link' %>
+                        <%end%>
+                    </p>
                     <p class="navbar-text pull-right">
                         <% if user_signed_in? %>
                             Logged in as <strong><%= current_user.name %></strong>.

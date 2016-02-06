@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-7">
         <div class="media">
             <div class="media-body">
                 <h4 class="media-heading"><small> <%= @datum.title %></small> <%= @datum.firstname %> <%= @datum.surname %></h4>
@@ -10,10 +10,20 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-2 pull-right">
-        <% if current_user.admin?  %>
-            <%= link_to 'Edit Broker Details', edit_user_datum_path(current_user, @datum), class: 'btn btn-sm btn-primary pull-right' %>
-        <% end %>
+    <div class="col-lg-5">
+        <div class="row pull-right">
+            <% if current_user.admin?  %>
+                <div class="col-lg-4">
+                    <%= link_to 'Edit Broker Details', edit_user_datum_path(current_user, @datum), class: 'btn btn-sm btn-primary' %>
+                </div>
+                <div class="col-lg-4">
+                    <%= link_to 'Add Broker Details', new_user_datum_path(current_user), class: 'btn btn-sm btn-primary' %>
+                </div>
+            <% end %>
+            <div class="col-lg-4">
+                <%= link_to 'View Broker Details', user_data_path(current_user), class: 'btn btn-sm btn-primary' %>
+            </div>
+        </div>
     </div>
 </div>
 <hr class="colorgraph">
@@ -46,13 +56,13 @@
                 <h3 class="panel-title">Anniversary Dates</h3>
             </div>
             <div class="panel-body">
-                <% if @datum.anniversary_date_1 || @datum.anniversary_date_2 || @datum.anniversary_date_3 %>%
+                <% if @datum.anniversary_date_1 || @datum.anniversary_date_2 || @datum.anniversary_date_3 %>
                     <span>
-                        <%= I18n.l @datum.anniversary_date_1, :format => :long  %>
+                        <%= I18n.l @datum.anniversary_date_1, :format => :long  if @datum.anniversary_date_1 %>
                         <br/>
-                        <%= I18n.l @datum.anniversary_date_2, :format => :long  %>
+                        <%= I18n.l @datum.anniversary_date_2, :format => :long  if @datum.anniversary_date_2 %>
                         <br/>
-                        <%= I18n.l @datum.anniversary_date_3, :format => :long  %>
+                        <%= I18n.l @datum.anniversary_date_3, :format => :long  if @datum.anniversary_date_3 %>
                     </span>
                 <%else%>
                     <span> No data to show</span>

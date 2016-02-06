@@ -1,1 +1,12 @@
-<%= render 'form' %>
+<div class="container">
+    <div class="row pull-right">
+        <div class="col-lg-6">
+            <% if current_user.admin?  %>
+                <%= link_to 'View Broker Details', user_data_path(current_user), class: 'btn btn-sm btn-primary' %>
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class="small-margin-top">
+    <%= render 'form' %>
+</div>

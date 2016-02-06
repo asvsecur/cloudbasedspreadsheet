@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :users do
     get :doc
+    resources :permission
     resources :data do
       member do
         get :download

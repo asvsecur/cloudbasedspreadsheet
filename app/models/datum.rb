@@ -5,5 +5,6 @@ class Datum < ActiveRecord::Base
 
   do_not_validate_attachment_file_type :file
   validates_attachment_size :file, :less_than => 5.megabytes
+  validates :name, presence: true
   belongs_to :user
 end
