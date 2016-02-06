@@ -1,7 +1,7 @@
 class DataController < ApplicationController
   before_filter :find_user, only: [:index,:new, :edit, :update, :create, :show, :destroy, :download]
   before_action :set_datum, only: [:show, :edit, :update, :destroy, :download]
-  before_action :check_permissions, only: [:show, :edit, :update, :destroy, :create]
+  before_action :check_permissions, only: [:new, :show, :edit, :update, :destroy, :create]
   # GET /data
   # GET /data.json
   def index
@@ -89,7 +89,7 @@ class DataController < ApplicationController
   def check_permissions
     datum_id = params[:id]
     unless @user.admin?
-      redirect_to '/' unless @user.accessible_datum.compact.include?(datum_id)
+      redirect_to access_denied_index_path unless @user.accessible_datum.compact.include?(datum_id)
     end
   end
 end
