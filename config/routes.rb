@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'access_denied/index'
-
-  resources :data
   devise_for :users
+
+  get 'access_denied/index'
+  resources :data
 
   devise_scope :user do
     authenticated :user do
