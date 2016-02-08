@@ -6,7 +6,7 @@ class DataController < ApplicationController
   # GET /data.json
   def index
     if @user.admin?
-      @data = @user.datum.all
+      @data = Datum.all
     else
       accessible_datum_ids = @user.accessible_datum
       @data = Datum.where(id:accessible_datum_ids)
